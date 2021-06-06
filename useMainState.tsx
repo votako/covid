@@ -3,11 +3,13 @@ import axios from "axios";
 
 interface IMainState {
     data: IDataInter[];
+    total: IDataTotal;
     selected: IDataInter;
     filteredArr: string;
     isLoaded: boolean;
     input: string;
     isGetInfo: boolean;
+    isGetInfoTotal: boolean;
     sort: string;
     sorted: boolean;
 }
@@ -21,13 +23,25 @@ interface IDataInter {
     TotalRecovered: number;
 }
 
+interface IDataTotal {
+    TotalRecovered: number;
+    NewConfirmed: number;
+    NewDeaths: number;
+    NewRecovered: number;
+    TotalConfirmed: number;
+    TotalDeaths: number;
+    Date: Date;
+}
+
 const initalState = {
     data: [],
+    total: {} as IDataTotal,
     selected: {} as IDataInter,
     filteredArr: "",
     isLoaded: false,
     input: "",
     isGetInfo: false,
+    isGetInfoTotal: false,
     sort: "Country",
     sorted: false,
 }
@@ -37,10 +51,16 @@ const useMainState = () => {
     useEffect(() => { getData(); }, []);
     const getData = async() => {
         try{
-            const total = await axios.get("https://api.covid19api.com/summary");
+            const getTotal = await axios.get("https://api.covid19api.com/summary");
+            const total = getTotal.data.Countries.map((el:any, index: any) => {
+                const strNum = index+1;
+                return el = {...el, strNum};
+            })
+
             setState((s) => ({
                 ...s,
-                data: total.data.Countries,
+                data: total,
+                total: getTotal.data.Global,
             }))
         }catch(error){
             console.error();
@@ -56,6 +76,13 @@ const useMainState = () => {
             sorted: !s.sorted
         }))
     }
+    // get info
+    const onToggleModalTotal = () => {
+        setState((s) => ({
+          ...s,
+          isGetInfoTotal: !s.isGetInfoTotal,
+        }));
+    };
     // get info
     const onToggleModal = () => {
         setState((s) => ({
@@ -96,6 +123,7 @@ const useMainState = () => {
         onFilter,
         onSelectCountry,
         onToggleModal,
+        onToggleModalTotal,
     }
 }
 
