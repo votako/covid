@@ -7,6 +7,7 @@ import { TableBody } from "./components/tableBody";
 import { InfoBoxDetail } from "./components/infoBoxDetail";
 import { MakeCenter, Head, Img, GlobalBox, Search } from './styles'
 import { CovidImg } from './constants/const'
+import {IDataInter} from './interface/dataInterface'
 
 function App() {
   const {
@@ -49,7 +50,7 @@ function App() {
     <TableHeader
       onFilter={onFilter}
     />
-    {filteredArr.map((el: any) => {
+    {filteredArr.map((el: IDataInter) => {
       const onClick = () => {
         onSelectCountry(el);
         onToggleModal();
