@@ -17,7 +17,6 @@ float: left;
 `
 export const GlobalBox = styled.div`
 text-align: center;
-text-padding-bottom: 20px;
 border: 1px outset white;
 -webkit-box-shadow: 0px 7px 17px 6px rgba(0,0,0,0.61); 
 box-shadow: 0px 7px 17px 6px rgba(0,0,0,0.61);
@@ -25,7 +24,7 @@ border-radius: 7px 7px 7px 7px;
 `
 export const GlobalInfo = styled.div`
 float: left;
-padding 5px;
+padding: 5px;
 `
 export const GlobalInfoBtn = styled.div`
 font-family: Gill Sans Extrabold, sans-serif;
