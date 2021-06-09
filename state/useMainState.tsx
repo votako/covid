@@ -34,7 +34,7 @@ const useMainState = () => {
     const getData = async() => {
         try{
             const getTotal = await axios.get(SummaryUrl);
-            const total = await getTotal.data.Countries.map((el:any, index: any) => {
+            const total = await getTotal.data.Countries.map((el: IDataInter, index: number) => {
                 const strNum = index+1;
                 return el = {...el, strNum};
             })
@@ -88,7 +88,7 @@ const useMainState = () => {
         }));
     };
       
-    const filteredArr = state.data.sort((a: any, b: any) => { //
+    const filteredArr = state.data.sort((a: any, b: any) => {
         if (a[state.sort] > b[state.sort]) {return 1;}
         if (a[state.sort] < b[state.sort]) {return -1;}
         return 0;
