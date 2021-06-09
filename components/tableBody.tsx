@@ -1,18 +1,10 @@
 import React from 'react'
 import { ItemWrapper, BoxNum, BoxName, BoxTotal } from '../styles'
+import {IDataInter} from '../interface/dataInterface'
 
 interface ITableBody{
     onClick: () => void;
     el: IDataInter;
-}
-
-interface IDataInter {
-    ID: string;
-    strNum: number;
-    Country: string;
-    TotalConfirmed: number;
-    TotalDeaths: number;
-    TotalRecovered: number;
 }
 
 export const TableBody = (props: ITableBody) => {
