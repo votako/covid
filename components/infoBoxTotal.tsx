@@ -1,25 +1,25 @@
 import React from "react"
-import { PlanetImg } from "../constants/const"
+import { planetImg } from "../constants/const"
 import { CloseButton, GlobalInfo, Img, ModalInfoBoxTotal, ModalWrapper } from "../styles"
-import { IDataTotal } from '../interface/dataInterface'
-interface IInfoBoxTotal {
+import { DataTotal } from '../interface/dataInterface'
+interface InfoBoxTotal {
     onToggleModalTotal: () => void;
-    total: IDataTotal;
+    total: DataTotal;
 }
 
-export const InfoBoxTotal = (props: IInfoBoxTotal) => {
+export const InfoBoxTotal = (props: InfoBoxTotal) => {
     return (
         <>
         <ModalWrapper>
           <ModalInfoBoxTotal>
-            <Img src={PlanetImg} />
-            <GlobalInfo>Date: {props.total.Date}</GlobalInfo>
-            <GlobalInfo>NewConfirmed: {props.total.NewConfirmed}</GlobalInfo>
-            <GlobalInfo>NewDeaths: {props.total.NewDeaths}</GlobalInfo>
-            <GlobalInfo>NewRecovered: {props.total.NewRecovered}</GlobalInfo>
-            <GlobalInfo>TotalConfirmed: {props.total.TotalConfirmed}</GlobalInfo>
-            <GlobalInfo>TotalDeaths: {props.total.TotalDeaths}</GlobalInfo>
-            <GlobalInfo>TotalRecovered: {props.total.TotalRecovered}</GlobalInfo>
+            <Img src={planetImg} />
+            <GlobalInfo>Date: {props.total.date}</GlobalInfo>
+            <GlobalInfo>NewConfirmed: {props.total.newConfirmed}</GlobalInfo>
+            <GlobalInfo>NewDeaths: {props.total.newDeaths}</GlobalInfo>
+            <GlobalInfo>NewRecovered: {props.total.newRecovered}</GlobalInfo>
+            <GlobalInfo>TotalConfirmed: {props.total.totalConfirmed}</GlobalInfo>
+            <GlobalInfo>TotalDeaths: {props.total.totalDeaths}</GlobalInfo>
+            <GlobalInfo>TotalRecovered: {props.total.totalRecovered}</GlobalInfo>
             <CloseButton onClick={props.onToggleModalTotal}>X</CloseButton>
           </ModalInfoBoxTotal>
         </ModalWrapper>

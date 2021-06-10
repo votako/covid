@@ -6,8 +6,8 @@ import { TableHeader } from "./components/tableHeader";
 import { TableBody } from "./components/tableBody";
 import { InfoBoxDetail } from "./components/infoBoxDetail";
 import { MakeCenter, Head, Img, GlobalBox, Search } from './styles'
-import { CovidImg } from './constants/const'
-import {IDataInter} from './interface/dataInterface'
+import { covidImg } from './constants/const'
+import { DataInter } from './interface/dataInterface'
 
 function App() {
   const {
@@ -31,7 +31,7 @@ function App() {
   <><MakeCenter>
     <Head>
       <GlobalBox>
-        <Img src={CovidImg}/>
+        <Img src={covidImg}/>
         <InfoButtonTotal 
           onToggleModalTotal={onToggleModalTotal} 
         />
@@ -50,7 +50,7 @@ function App() {
     <TableHeader
       onFilter={onFilter}
     />
-    {filteredArr.map((el: IDataInter) => {
+    {filteredArr.map((el: DataInter) => {
       const onClick = () => {
         onSelectCountry(el);
         onToggleModal();

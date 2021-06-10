@@ -1,18 +1,18 @@
-export interface IDataInter {
+export interface DataInter {
     ID: string;
     strNum: number;
     Country: string;
-    TotalConfirmed: number;
-    TotalDeaths: number;
-    TotalRecovered: number;
+    totalConfirmed: number;
+    totalDeaths: number;
+    totalRecovered: number;
 }
 
-export interface IDataTotal {
-    TotalRecovered: number;
-    NewConfirmed: number;
-    NewDeaths: number;
-    NewRecovered: number;
-    TotalConfirmed: number;
-    TotalDeaths: number;
-    Date: Date;
+export interface DataTotal {
+    totalRecovered: number;
+    newConfirmed: number;
+    newDeaths: number;
+    newRecovered: number;
+    totalConfirmed: number;
+    totalDeaths: number;
+    date: Date;
 }

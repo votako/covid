@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import axios from "axios";
-import { SummaryUrl } from '../constants/const';
-import { IDataInter, IDataTotal } from '../interface/dataInterface'
-interface IMainState {
-    data: IDataInter[];
-    total: IDataTotal;
-    selected: IDataInter;
+import { summaryUrl } from '../constants/const';
+import { DataInter, DataTotal } from '../interface/dataInterface'
+interface MainState {
+    data: DataInter[];
+    total: DataTotal;
+    selected: DataInter;
     filteredArr: string;
     isLoaded: boolean;
     input: string;
@@ -17,8 +17,8 @@ interface IMainState {
 
 const initalState = {
     data: [],
-    total: {} as IDataTotal,
-    selected: {} as IDataInter,
+    total: {} as DataTotal,
+    selected: {} as DataInter,
     filteredArr: "",
     isLoaded: false,
     input: "",
@@ -29,12 +29,12 @@ const initalState = {
 }
 
 const useMainState = () => {
-    const [state, setState] = useState<IMainState>(initalState);
+    const [state, setState] = useState<MainState>(initalState);
     useEffect(() => { getData(); }, []);
     const getData = async() => {
         try{
-            const getTotal = await axios.get(SummaryUrl);
-            const total = await getTotal.data.Countries.map((el: IDataInter, index: number) => {
+            const getTotal = await axios.get(summaryUrl);
+            const total = await getTotal.data.Countries.map((el: DataInter, index: number) => {
                 const strNum = index+1;
                 return el = {...el, strNum};
             })
@@ -73,7 +73,7 @@ const useMainState = () => {
         }));
     };
     //   get info
-    const onSelectCountry = (selected: IDataInter) => {
+    const onSelectCountry = (selected: DataInter) => {
         setState((s) => ({
           ...s,
           selected,

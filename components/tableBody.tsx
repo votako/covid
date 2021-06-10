@@ -1,20 +1,20 @@
 import React from 'react'
 import { ItemWrapper, BoxNum, BoxName, BoxTotal } from '../styles'
-import {IDataInter} from '../interface/dataInterface'
+import { DataInter } from '../interface/dataInterface'
 
-interface ITableBody{
+interface TableBody{
     onClick: () => void;
-    el: IDataInter;
+    el: DataInter;
 }
 
-export const TableBody = (props: ITableBody) => {
+export const TableBody = (props: TableBody) => {
     return(
         <>
         <ItemWrapper onClick={props.onClick} key={props.el.ID}>
           <ItemWrapper>
             <BoxNum>{props.el.strNum}</BoxNum>
             <BoxName>{props.el.Country}</BoxName>
-            <BoxTotal>{props.el.TotalConfirmed}</BoxTotal>
+            <BoxTotal>{props.el.totalConfirmed}</BoxTotal>
           </ItemWrapper>
         </ItemWrapper>
         </>
